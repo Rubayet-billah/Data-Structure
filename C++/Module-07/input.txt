@@ -1,7 +1,0 @@
-6
-sakib 55 85
-rakib 14 85
-Nakib 68 67
-sadat 15 36
-aadat 95 75
-rahat 35 74
