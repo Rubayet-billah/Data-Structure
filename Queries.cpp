@@ -13,6 +13,17 @@ public:
         this->next = NULL;
     }
 };
+int get_size(Node *head)
+{
+    Node *temp = head;
+    int count = 0;
+    while (temp != NULL)
+    {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
 
 void insert_at_head(Node *&head, Node *&tail, int val)
 {
@@ -42,9 +53,25 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
     tail = newNode;
 }
 
-void delete_node(Node *&head, Node *tail, int pos)
+void delete_node(Node *&head, Node *&tail, int pos)
 {
     Node *temp = head;
+    if (temp == NULL)
+    {
+        return;
+    }
+    int size = get_size(head);
+    if (pos >= size)
+    {
+        return;
+    }
+
+    if (pos == 0)
+    {
+        head = head->next;
+        delete temp;
+        return;
+    }
     for (int i = 1; i < pos; i++)
     {
         temp = temp->next;
@@ -52,19 +79,11 @@ void delete_node(Node *&head, Node *tail, int pos)
 
     Node *deleteNode = temp->next;
     temp->next = deleteNode->next;
-    delete deleteNode;
-}
-
-int get_size(Node *head)
-{
-    Node *temp = head;
-    int count = 0;
-    while (temp != NULL)
+    if (pos == size - 1)
     {
-        count++;
-        temp = temp->next;
+        tail = temp;
     }
-    return count;
+    delete deleteNode;
 }
 
 void print_list(Node *temp)
