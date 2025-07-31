@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 class Node
 {
 public:
@@ -60,34 +59,40 @@ Node *input_tree()
     return root;
 }
 
-void inOrder(Node *root)
+vector<int> getLeafNodes(Node *root)
 {
-    if (root == NULL)
+    vector<int> v;
+    queue<Node *> q;
+    q.push(root);
+    while (!q.empty())
     {
-        return;
+        // Node ber kore ana
+        Node *temp = q.front();
+        q.pop();
+        // ber kora node niye kaj kora
+        if (!temp->left && !temp->right)
+        {
+            v.push_back(temp->val);
+        }
+        // node er children push kora
+        if (temp->left)
+            q.push(temp->left);
+        if (temp->right)
+            q.push(temp->right);
     }
-    inOrder(root->left);
-    cout << root->val << " ";
-    inOrder(root->right);
+    sort(v.begin(), v.end(), std::greater<int>());
+    return v;
 }
 
 int main()
 {
-    // Node *root = new Node(3);
-    // Node *a = new Node(5);
-    // Node *b = new Node(1);
-    // Node *c = new Node(40);
-    // Node *d = new Node(50);
-    // Node *e = new Node(60);
-
-    // root->left = a;
-    // root->right = b;
-    // a->left = c;
-    // b->left = d;
-    // b->right = e;
-
     Node *root = input_tree();
-    inOrder(root);
+
+    vector<int> v = getLeafNodes(root);
+    for (auto it : v)
+    {
+        cout << it << " ";
+    }
 
     return 0;
 }

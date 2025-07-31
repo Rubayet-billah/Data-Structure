@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 class Node
 {
 public:
@@ -60,34 +59,38 @@ Node *input_tree()
     return root;
 }
 
-void inOrder(Node *root)
+int count_nodes(Node *root)
+{
+    if (!root)
+        return 0;
+
+    int l = count_nodes(root->left);
+    int r = count_nodes(root->right);
+    return l + r + 1;
+}
+
+int max_height(Node *root)
 {
     if (root == NULL)
     {
-        return;
+        return 0;
     }
-    inOrder(root->left);
-    cout << root->val << " ";
-    inOrder(root->right);
+    if (!root->left && !root->right)
+    {
+        return 1;
+    }
+    int l = max_height(root->left);
+    int r = max_height(root->right);
+    return max(l, r) + 1;
 }
 
 int main()
 {
-    // Node *root = new Node(3);
-    // Node *a = new Node(5);
-    // Node *b = new Node(1);
-    // Node *c = new Node(40);
-    // Node *d = new Node(50);
-    // Node *e = new Node(60);
-
-    // root->left = a;
-    // root->right = b;
-    // a->left = c;
-    // b->left = d;
-    // b->right = e;
-
     Node *root = input_tree();
-    inOrder(root);
-
+    int totalNodes = count_nodes(root);
+    int treeHeight = max_height(root);
+    bool isPerfect = totalNodes == (pow(2, treeHeight) - 1);
+    string res = isPerfect ? "YES" : "NO";
+    cout << res;
     return 0;
 }

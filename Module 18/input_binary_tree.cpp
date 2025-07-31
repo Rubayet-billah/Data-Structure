@@ -25,7 +25,7 @@ Node *input_tree()
     if (rootVal == -1)
         root = NULL;
     else
-        new Node(rootVal);
+        root = new Node(rootVal);
     if (root)
         q.push(root);
     while (!q.empty())
