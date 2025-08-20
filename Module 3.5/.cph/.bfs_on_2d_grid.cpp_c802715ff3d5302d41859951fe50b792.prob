@@ -1,0 +1,1 @@
+{"name":"Local: bfs_on_2d_grid","url":"f:\\Phitron\\Data Structure\\Module 3.5\\bfs_on_2d_grid.cpp","tests":[{"id":1755714264936,"input":"3 4\n....\n.#..\n.#..\n1 2\n2 0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Phitron\\Data Structure\\Module 3.5\\bfs_on_2d_grid.cpp","group":"local","local":true}
