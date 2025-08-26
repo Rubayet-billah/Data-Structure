@@ -1,0 +1,1 @@
+{"name":"Local: helper_graph_inp_from_vector","url":"f:\\Phitron\\Data Structure\\helper_graph_inp_from_vector.cpp","tests":[{"id":1756176606193,"input":"[[1,2,3,4],[1,2],[3,4],[0,4],[]]","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Phitron\\Data Structure\\helper_graph_inp_from_vector.cpp","group":"local","local":true}
