@@ -1,27 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector<pair<int, int>> adj_list[100005];
-int dis[100005];
-int par_arr[100005];
+#define ll long long int
+vector<pair<ll, ll>> adj_list[100005];
+ll dis[100005];
+ll par_arr[100005];
 
-void dijkstra(int src)
+void dijkstra(ll src)
 {
-    priority_queue<pair<int, int>> pq;
+    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
     dis[src] = 0;
     pq.push({0, src});
     while (!pq.empty())
     {
-        pair<int, int> par = pq.top();
+        pair<ll, ll> par = pq.top();
         pq.pop();
-        int parNode = par.second;
-        int parDis = par.first;
+        ll parNode = par.second;
+        ll parDis = par.first;
 
         if (parDis > dis[parNode])
             continue;
         for (auto child : adj_list[parNode])
         {
-            int childNode = child.first;
-            int childDis = child.second;
+            ll childNode = child.first;
+            ll childDis = child.second;
             if ((parDis + childDis) < dis[childNode])
             {
                 dis[childNode] = parDis + childDis;
@@ -33,29 +34,30 @@ void dijkstra(int src)
 }
 int main()
 {
-    int n, e;
+    ll n, e;
     cin >> n >> e;
     while (e--)
     {
-        int a, b, c;
+        ll a, b, c;
         cin >> a >> b >> c;
         adj_list[a].push_back({b, c});
         adj_list[b].push_back({a, c});
     }
-    for (int i = 0; i < 100005; i++)
+    for (ll i = 1; i <= n; i++)
     {
-        dis[i] = INT_MAX;
+        dis[i] = LLONG_MAX;
         par_arr[i] = -1;
     }
+
     dijkstra(1);
 
-    if (dis[n] == INT_MAX)
+    if (dis[n] == LLONG_MAX)
     {
         cout << -1;
         return 0;
     }
-    vector<int> path;
-    int des = n;
+    vector<ll> path;
+    ll des = n;
     path.push_back(des);
     while (par_arr[des] != -1)
     {
