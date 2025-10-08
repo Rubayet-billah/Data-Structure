@@ -1,0 +1,1 @@
+{"name":"Local: Feynman","url":"d:\\Phitron\\Data-Structure\\Feynman.cpp","tests":[{"id":1759915286719,"input":"2\n1\n8\n0","output":"5\n1\n204"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Phitron\\Data-Structure\\Feynman.cpp","group":"local","local":true}
