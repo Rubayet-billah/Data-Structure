@@ -12,7 +12,7 @@ int main()
     {
         int n;
         cin >> n;
-        vector<int> v(n);
+        vector<ll> v;
         ll sum = 0;
         for (int i = 0; i < n; i++)
         {
@@ -22,17 +22,23 @@ int main()
             sum += abs(val);
         }
 
-        int l = 0, r = 0, cnt = 0;
-        while (r < n)
+        bool nonPosSeg = false;
+        ll cnt = 0;
+
+        for (int i = 0; i < n; i++)
         {
-            if (v[l] < 0)
+            if (v[i] < 0 && !nonPosSeg)
             {
-                while ()
-                {
-                    /* code */
-                }
+                nonPosSeg = true;
+                cnt++;
+            }
+            if (v[i] > 0)
+            {
+                nonPosSeg = false;
             }
         }
+
+        cout << sum << " " << cnt << "\n";
     }
     return 0;
 }

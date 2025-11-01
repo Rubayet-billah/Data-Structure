@@ -3,6 +3,8 @@
     "*.dbclient-js": "javascript",
     "tuple": "cpp",
     "iosfwd": "cpp",
-    "string": "cpp"
+    "string": "cpp",
+    "random": "cpp",
+    "iostream": "cpp"
   }
 }
