@@ -7,31 +7,36 @@ int main()
     cin.tie(nullptr);
     int n, x;
     cin >> n >> x;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++)
+    vector<int> v(n + 1);
+    map<int, int> mp;
+    bool found = false;
+    for (int i = 1; i <= n; i++)
     {
-        cin >> a[i].first;
-        a[i].second = i + 1;
+        int val;
+        cin >> val;
+        v[i] = val;
+        mp[v[i]] = i;
     }
-    sort(a.begin(), a.end());
-    for (int i = 0; i < n; i++)
+
+    for (int i = 1; i <= n - 2; i++)
     {
-        int target = x - a[i].first;
-        int l = i + 1, r = n - 1;
-        while (l < r)
+        for (int j = i + 1; j <= n - 1; j++)
         {
-            int sum = a[l].first + a[r].first;
-            if (sum == target)
+            int c = x - (v[i] + v[j]);
+            if (mp[c] > 0 && (i != j && j != mp[c]))
             {
-                cout << a[i].second << " " << a[l].second << " " << a[r].second << "\n";
-                return 0;
+                found = true;
+                cout << i << " " << j << " " << mp[c] << "\n";
+                break;
             }
-            else if (sum < target)
-                l++;
-            else
-                r--;
         }
+        if (found)
+            break;
     }
-    cout << "IMPOSSIBLE\n";
+    if (!found)
+    {
+        cout << "IMPOSSIBLE\n";
+    }
+
     return 0;
 }
