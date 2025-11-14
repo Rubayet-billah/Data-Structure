@@ -8,16 +8,16 @@ int main()
     cin.tie(nullptr);
     int n, m, q;
     cin >> n >> m >> q;
-    vector<ll> a(n + 2), ref(n + 2, 0);
+    vector<ll> a(n + 2), ref(n + 2, 0), opCnt(m + 2, 0);
     vector<ll> pref(n + 2, 0);
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
     }
-    vector<vector<int>> ops(m + 1);
+    vector<vector<ll>> ops(m + 1);
     for (int i = 1; i <= m; i++)
     {
-        int l, r, d;
+        ll l, r, d;
         cin >> l >> r >> d;
         ops[i] = {l, r, d};
     }
@@ -25,14 +25,31 @@ int main()
     {
         int l, r;
         cin >> l >> r;
-        for (int j = l; j <= r; j++)
-        {
-            int a = ops[j][0];
-            int b = ops[j][1];
-            int x = ops[j][2];
-            ref[a] += x;
-            ref[b + 1] -= x;
-        }
+        opCnt[l]++;
+        opCnt[r + 1]--;
+
+        // for (int j = l; j <= r; j++)
+        // {
+        //     int a = ops[j][0];
+        //     int b = ops[j][1];
+        //     int x = ops[j][2];
+        //     ref[a] += x;
+        //     ref[b + 1] -= x;
+        // }
+    }
+    for (int i = 1; i <= m; i++)
+    {
+        opCnt[i] = opCnt[i - 1] + opCnt[i];
+        ops[i].push_back(opCnt[i]);
+    }
+    for (int i = 1; i <= m; i++)
+    {
+        ll a = ops[i][0];
+        ll b = ops[i][1];
+        ll x = ops[i][2];
+        ll cnt = ops[i][3];
+        ref[a] += (x * cnt);
+        ref[b + 1] -= (x * cnt);
     }
 
     for (int i = 1; i <= n; i++)
