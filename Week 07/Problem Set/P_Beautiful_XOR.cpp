@@ -3,51 +3,49 @@ using namespace std;
 #define fast                     \
     ios::sync_with_stdio(false); \
     cin.tie(nullptr);
-#define ll long long
-#define haa cout << "Yes\n";
-#define naa cout << "No\n";
-#define endl cout << "\n";
 #define nl "\n"
 
 void solve()
 {
     int a, b;
     cin >> a >> b;
+
     if (a == b)
     {
         cout << 0 << nl;
         return;
     }
-    if (__lg(b) > __lg(a))
+
+    int msbA = __lg(a), msbB = __lg(b);
+
+    if (msbB > msbA)
     {
         cout << -1 << nl;
         return;
     }
-    int tmpA = a;
-    vector<int> op;
-    while (tmpA != b)
+
+    int tmpXor = a ^ b;
+    if (tmpXor <= a)
     {
-        if (b < tmpA)
-        {
-            int tmpXor = tmpA ^ b;
-            tmpA = tmpXor;
-            op.push_back(b);
-        }
-        if (b > tmpA)
-        {
-            int tmpXor = tmpA ^ b;
-            tmpA = tmpXor;
-            op.push_back(tmpXor);
-        }
+        cout << 1 << nl << tmpXor << nl;
+        return;
+    }
+    else
+    {
+        int maxNum = (1 << (msbA + 1)) - 1;
+        int x1 = a ^ maxNum;
+        int x2 = maxNum ^ b;
+
+        cout << 2 << nl << x1 << " " << x2 << nl;
+        return;
     }
 }
 
 int main()
 {
     fast;
-    int t = 1;
+    int t;
     cin >> t;
     while (t--)
         solve();
-    return 0;
 }
