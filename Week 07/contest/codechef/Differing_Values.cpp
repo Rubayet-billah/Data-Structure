@@ -14,27 +14,33 @@ void solve()
     int n, k;
     string s;
     cin >> n >> k >> s;
-    int cntOnes = 0, cntZeros = 0;
+    int cntZeros = 0;
     for (int i = 0; i < n; i++)
     {
         if (s[i] == '0')
             cntZeros++;
-        else
-            cntOnes++;
     }
-    int mn = min(cntOnes, cntZeros);
-    int mx = n - mn;
-    vector<int> arr;
-    for (int i = 0; i < n; i++)
+    vector<int> grp(k, n / k);
+    int restModulo = n % k;
+    for (int i = 0; i < restModulo; i++)
+        grp[i]++;
+
+    int mnCnt0 = 0, maxCnt0 = 0;
+    for (int i = 0; i < k; i++)
     {
+        if (grp[i] & 1)
+        {
+            mnCnt0 += (grp[i] / 2);
+            maxCnt0 += ((grp[i] / 2) + 1);
+        }
+        else
+        {
+            mnCnt0 += (grp[i] / 2);
+            maxCnt0 += ((grp[i] / 2));
+        }
     }
-    // if (mn < n - k)
-    // {
-    //     naa return;
-    // }
-    int diff = abs(cntOnes - cntZeros);
-    if (diff > (k))
-        naa else haa
+    if (cntZeros <= maxCnt0 && cntZeros >= mnCnt0)
+        haa else naa
 }
 
 int main()
