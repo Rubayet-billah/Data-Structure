@@ -11,11 +11,22 @@ using namespace std;
 
 void solve()
 {
-    int x, y;
-    cin >> x >> y;
-    int gap = x - 1;
-    int k = y / gap;
-    cout << k << nl;
+    int n;
+    cin >> n;
+    int minCost = INT_MAX;
+    for (int i = 0; i < n; i++)
+    {
+        int imdb, cost;
+        cin >> imdb >> cost;
+        if (imdb >= 7)
+        {
+            minCost = min(minCost, cost);
+        }
+    }
+    if (minCost == INT_MAX)
+        cout << -1 << nl;
+    else
+        cout << minCost << nl;
 }
 
 int main()

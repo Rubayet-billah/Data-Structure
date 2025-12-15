@@ -11,20 +11,16 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int cnt = __builtin_popcount(n);
-    if (cnt % 2 == 0)
-        cout << "EVEN\n";
-    else
-        cout << "ODD\n";
+    int a, b;
+    cin >> a >> b;
+    cout << b - a + 1 << nl;
 }
 
 int main()
 {
     fast;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

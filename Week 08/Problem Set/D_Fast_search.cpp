@@ -16,22 +16,25 @@ void solve()
     vector<int> a(n);
     for (int i = 0; i < n; i++)
         cin >> a[i];
-
     sort(a.begin(), a.end());
-    ll cnt = 0;
-    for (int i = 0; i < n; i++)
+    int q;
+    cin >> q;
+    for (int i = 0; i < q; i++)
     {
-        int diff = abs(a[i] - i);
-        cnt += diff;
+        int n1, n2;
+        cin >> n1 >> n2;
+        auto fIt = lower_bound(a.begin(), a.end(), n1);
+        auto sIt = upper_bound(a.begin(), a.end(), n2);
+        cout << sIt - fIt << " ";
     }
-    cout << cnt << nl;
+    endl
 }
 
 int main()
 {
     fast;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;
