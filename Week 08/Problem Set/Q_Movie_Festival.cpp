@@ -22,11 +22,15 @@ void solve()
     }
     sort(a.begin(), a.end());
     int cnt = 1;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << a[i].second << " " << a[i].first << nl;
+    // }
 
     int lastWatch = a[0].first;
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 1; i < n; i++)
     {
-        if (lastWatch <= a[i + 1].second)
+        if (lastWatch <= a[i].second)
         {
             cnt++;
             lastWatch = a[i].first;
