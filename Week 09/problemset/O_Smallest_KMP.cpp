@@ -42,9 +42,20 @@ void solve()
             }
         }
     }
-    ans.insert(insertPos, p);
+    // ans.insert(insertPos, p);
     // cout << firstCharPos << "  " << insertPos;
-    cout << ans;
+
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i];
+        if (i == insertPos - 1)
+        {
+            for (char c : p)
+                cout << c;
+        }
+    }
+
+    // cout << ans;
     endl;
 }
 
