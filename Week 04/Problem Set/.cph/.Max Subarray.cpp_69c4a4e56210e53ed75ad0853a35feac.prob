@@ -1,1 +1,0 @@
-{"name":"Local: Max Subarray","url":"f:\\Phitron\\Data Structure\\Week 04\\Problem Set\\Max Subarray.cpp","tests":[{"id":1761417326652,"input":"1 4 2 10 23 3 1 0 20\n4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Phitron\\Data Structure\\Week 04\\Problem Set\\Max Subarray.cpp","group":"local","local":true}
