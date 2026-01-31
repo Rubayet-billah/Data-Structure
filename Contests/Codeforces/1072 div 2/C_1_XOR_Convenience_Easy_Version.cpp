@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fast                     \
+    ios::sync_with_stdio(false); \
+    cin.tie(nullptr);
+#define ll long long
+#define haa cout << "Yes\n";
+#define naa cout << "No\n";
+#define endl cout << "\n";
+#define nl "\n"
+
+void solve()
+{
+    int n;
+    cin >> n;
+    if (n & 1)
+        cout << n - 1 << " ";
+    else
+        cout << n << " ";
+
+    for (int i = 2; i < n; i++)
+    {
+        cout << ((i & 1) ? (i - 1) : (i + 1)) << " ";
+    }
+    cout << 1 << nl;
+}
+
+int main()
+{
+    fast;
+    int t = 1;
+    cin >> t;
+    while (t--)
+        solve();
+    return 0;
+}
