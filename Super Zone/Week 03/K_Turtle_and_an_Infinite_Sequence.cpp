@@ -15,6 +15,7 @@ void solve()
     cin >> n >> m;
     cout << (n | ((1 << (__lg(m) + 1)) - 1)) << nl;
 }
+//
 
 int main()
 {
