@@ -11,11 +11,25 @@ using namespace std;
 
 void solve()
 {
-    int n, m;
+    ll n, m;
     cin >> n >> m;
-    cout << (n | ((1 << (__lg(m) + 1)) - 1)) << nl;
+    if (n == 0 && m == 0)
+    {
+        cout << 0 << nl;
+        return;
+    }
+    ll first = max(0LL, (n - m));
+    ll last = n + m;
+    if (first == last)
+    {
+        cout << first << nl;
+        return;
+    }
+    ll xorVal = first ^ last;
+    int diffMSB = 63 - __builtin_clzll(xorVal);
+    ll mask = (1LL << (diffMSB + 1)) - 1;
+    cout << (last | mask) << nl;
 }
-//
 
 int main()
 {
