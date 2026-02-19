@@ -11,19 +11,27 @@ using namespace std;
 
 void solve()
 {
-    int w, p, k;
-    cin >> w >> p >> k;
-    int wChairs = min(k, w);
-    int pChairs = k - wChairs;
-
-    cout << ((wChairs * 2) + pChairs) << '\n';
+    int n, k;
+    cin >> n >> k;
+    for (int i = 0; i < k; i++)
+    {
+        if (n % 10 == 0)
+        {
+            n /= 10;
+        }
+        else
+        {
+            n--;
+        }
+    }
+    cout << n << nl;
 }
 
 int main()
 {
     fast;
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

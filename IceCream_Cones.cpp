@@ -11,12 +11,10 @@ using namespace std;
 
 void solve()
 {
-    int w, p, k;
-    cin >> w >> p >> k;
-    int wChairs = min(k, w);
-    int pChairs = k - wChairs;
-
-    cout << ((wChairs * 2) + pChairs) << '\n';
+    int x, y, n;
+    cin >> x >> y >> n;
+    int ans = x - (y * n);
+    cout << max(0, ans) << nl;
 }
 
 int main()
