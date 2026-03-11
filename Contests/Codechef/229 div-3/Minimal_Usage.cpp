@@ -52,15 +52,15 @@ void solve()
     // Since the problem guarantees a solution exists, we can binary search
     // based on whether we need 'more' or 'less' weight.
 
-    ll low = 0, high = K, ans = K;
-    while (low <= high)
+    ll l = 0, r = K, ans = K;
+    while (l <= r)
     {
-        ll mid = low + (high - low) / 2;
+        ll mid = l + (r - l) / 2;
 
         if (ok(mid))
         {
             ans = mid;
-            high = mid - 1; // Try to find a smaller number of M cakes
+            r = mid - 1; // Try to find a smaller number of M cakes
         }
         else
         {
@@ -74,17 +74,17 @@ void solve()
             {
                 // To reduce weight: if M is heavy, decrease x. If M is light, increase x.
                 if (M > w_min)
-                    high = mid - 1;
+                    r = mid - 1;
                 else
-                    low = mid + 1;
+                    l = mid + 1;
             }
             else
             {
                 // To increase weight: if M is heavy, increase x. If M is light, decrease x.
                 if (M < w_max)
-                    low = mid + 1;
+                    l = mid + 1;
                 else
-                    high = mid - 1;
+                    r = mid - 1;
             }
         }
     }
@@ -94,7 +94,7 @@ int main()
 {
     fast;
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--)
         solve();
     return 0;
