@@ -11,47 +11,37 @@ using namespace std;
 
 void solve()
 {
-    int n, c;
-    cin >> n >> c;
-    vector<int> a(n);
-    set<int> s;
-    bool same = false, small = false;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        s.insert(a[i]);
-        if (a[i] == c)
-            same = true;
-        if (a[i] < c)
-            small = true;
-    }
+    int N, C;
+    cin >> N >> C;
 
-    if (small && !same)
-    {
-        cout << 0 << nl;
-        return;
-    }
+    vector<int> A(N);
+    set<int> friends_cookies;
+    int min_friend = 200;
 
-    int curr = c;
-
-    while (true)
+    for (int i = 0; i < N; ++i)
     {
-        if (s.count(curr))
+        cin >> A[i];
+        friends_cookies.insert(A[i]);
+        if (A[i] < min_friend)
         {
-            curr++;
-        }
-        else
-        {
-
-            if (small || curr > *s.begin())
-            {
-                break;
-            }
-            curr++;
+            min_friend = A[i];
         }
     }
 
-    cout << curr - c << nl;
+    int current_alice = C;
+
+       while (true)
+    {
+        bool cond1 = (current_alice > min_friend);
+        bool cond2 = (friends_cookies.find(current_alice) == friends_cookies.end());
+
+        if (cond1 && cond2)
+        {
+            cout << current_alice - C << nl;
+            return;
+        }
+        current_alice++;
+    }
 }
 
 int main()
