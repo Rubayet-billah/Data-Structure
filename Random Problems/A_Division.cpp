@@ -9,8 +9,25 @@ using namespace std;
 #define endl cout << "\n";
 #define nl "\n"
 
+// For Division 1: 1900≤rating
+// For Division 2: 1600≤rating≤1899
+// For Division 3: 1400≤rating≤1599
+// For Division 4: rating≤1399
+
 void solve()
 {
+    int rating;
+    cin >> rating;
+    int ans = 0;
+    if (rating >= 1900)
+        ans = 1;
+    else if (rating >= 1600)
+        ans = 2;
+    else if (rating >= 1400)
+        ans = 3;
+    else
+        ans = 4;
+    cout << "Division " << ans << nl;
 }
 
 int main()
